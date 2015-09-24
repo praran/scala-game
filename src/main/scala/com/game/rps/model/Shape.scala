@@ -1,88 +1,86 @@
 package com.game.rps.model
 
 
-/**
- * Defining a partial order for game
- * @tparam T
- */
-trait GameOrder[T] {
-
-  def beatenBy(other: GameOrder[T]): Boolean
-
-}
-
-
-/**
- * Shapes for the ROCK , PAPER and SCISSORS game
- * implements partial order and also contains a string representation of the shape
- */
-trait Shape extends GameOrder[Shape] {
+object GameShapes {
 
   /**
-   * Store the shapes that can beat this shape
-   * @return
+   * Shapes for the ROCK , PAPER and SCISSORS game
+   * implements partial order and also contains a string representation of the shape
    */
-  protected def canBeBeatenBy: Set[GameOrder[Shape]]
+  sealed trait Shape extends Ordered[Shape] {
+
+    /**
+     * Store the shapes that can beat this shape
+     * @return
+     */
+    protected def canBeBeatenBy: Set[Shape]
+
+     def stringValue:String
+
+    // add comparision feature
+
+    override def compare(that: Shape) = {
+
+      if (that.toString.equals(this.toString)) 0
+      else if (this.canBeBeatenBy.contains(that)) 1
+      else -1
+    }
+  }
+
 
   /**
-   * String representation of the shape
-   * @return
+   * A singleton object representing the ROCK shape
    */
-  protected def stringValue: String
+  case object ROCK extends Shape {
+    /**
+     * @inheritdoc
+     */
+    def canBeBeatenBy = Set[Shape](PAPER)
 
-  // add comparision feature
+    /**
+     * @inheritdoc
+     */
+    override def toString =  "ROCK"
+
+
+    override def stringValue:String = toString
+  }
 
   /**
-   * Return if the other shape can beat this shape
-   * @param other
-   * @return
+   * A singleton object representing the PAPER shape
    */
-  override
-  def beatenBy(other: GameOrder[Shape]): Boolean = canBeBeatenBy.contains(other)
-}
+  case object PAPER extends Shape {
+    /**
+     * @inheritdoc
+     */
+    def canBeBeatenBy = Set[Shape](SCISSORS)
 
+    /**
+     * @inheritdoc
+     */
+    override def toString = "PAPER"
 
-/**
- * A singleton object representing the ROCK shape
- */
-case object ROCK extends Shape {
-  /**
-   * @inheritdoc
-   */
-  def canBeBeatenBy = Set[GameOrder[Shape]](PAPER)
+    override def stringValue:String = toString
+  }
 
   /**
-   * @inheritdoc
+   * A singleton object representing the SCISSORS shape
    */
-  def stringValue = "ROCK"
-}
+  case object SCISSORS extends Shape {
+    /**
+     * @inheritdoc
+     */
+    def canBeBeatenBy = Set[Shape](ROCK)
 
-/**
- * A singleton object representing the PAPER shape
- */
-case object PAPER extends Shape {
-  /**
-   * @inheritdoc
-   */
-  def canBeBeatenBy = Set[GameOrder[Shape]](SCISSORS)
+    /**
+     * @inheritdoc
+     */
+    override def toString  = "SCISSORS"
 
-  /**
-   * @inheritdoc
-   */
-  def stringValue = "PAPER"
-}
+    override def stringValue:String = toString
+  }
 
-/**
- * A singleton object representing the SCISSORS shape
- */
-case object SCISSORS extends Shape {
-  /**
-   * @inheritdoc
-   */
-  def canBeBeatenBy = Set[GameOrder[Shape]](ROCK)
 
-  /**
-   * @inheritdoc
-   */
-  def stringValue = "SCISSORS"
+  def allShapes:Seq[Shape] = Seq(ROCK, SCISSORS, PAPER)
+
 }

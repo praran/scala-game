@@ -1,7 +1,7 @@
 package com.game.rps.core.moves
 
 import com.game.rps.core.random.RandomGenerator
-import com.game.rps.model.{GameOrder, Shape}
+import com.game.rps.model.GameShapes.Shape
 
 
 /**
@@ -20,7 +20,7 @@ trait MovesGenerator[T] {
    * Generate a single move
    * @return
    */
-  def generateMove(): Option[T]
+  def generateMove(): T
 
 }
 
@@ -29,7 +29,7 @@ trait MovesGenerator[T] {
  * Moves generator for Rock, Paper and Scissors game
  * Give an list of shapes should generate a move
  */
-trait RPSMovesGenerate extends MovesGenerator[GameOrder[Shape]] {
+trait RPSMovesGenerate extends MovesGenerator[Shape] {
 
   /**
    * @inheritdoc
@@ -50,7 +50,7 @@ trait RPSMovesGenerate extends MovesGenerator[GameOrder[Shape]] {
  * @param m
  * @param rg
  */
-class RPSMovesGenerator private(m: Seq[GameOrder[Shape]])(implicit rg: RandomGenerator) extends RPSMovesGenerate {
+class RPSMovesGenerator private(m: Seq[Shape])(implicit rg: RandomGenerator) extends RPSMovesGenerate {
   /**
    * @inheritdoc
    */
@@ -60,7 +60,7 @@ class RPSMovesGenerator private(m: Seq[GameOrder[Shape]])(implicit rg: RandomGen
    * @inheritdoc
    * @return
    */
-  override def moves: Seq[GameOrder[Shape]] = m
+  override def moves: Seq[Shape] = m
 }
 
 /**
@@ -77,7 +77,7 @@ object RPSMovesGenerator {
    * @param m
    * @return
    */
-  def apply(m: Seq[GameOrder[Shape]]) = new RPSMovesGenerator(m)
+  def apply(m: Seq[Shape]) = new RPSMovesGenerator(m)
 
 }
 

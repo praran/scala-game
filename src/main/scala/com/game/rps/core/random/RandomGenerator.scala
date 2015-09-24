@@ -13,7 +13,7 @@ trait RandomGenerator {
    * @tparam T
    * @return
    */
-  def getRandom[T <: AnyRef](in: Seq[T]): Option[T]
+  def getRandom[T <: AnyRef](in: Seq[T]): T
 }
 
 
@@ -40,7 +40,7 @@ object DefaultRandomGenerator {
      * @inheritdoc
      */
     override def getRandom[T <: AnyRef](in: Seq[T]) = {
-      if (in.nonEmpty) Some(random.shuffle(in).head) else None
+      random.shuffle(in).head
     }
   }
 

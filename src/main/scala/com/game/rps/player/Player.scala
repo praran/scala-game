@@ -1,8 +1,7 @@
 package com.game.rps.player
 
-import com.game.rps.core.moves.RPSMovesGenerate
-import com.game.rps.model.{GameOrder, Shape}
-
+import com.game.rps.model.GameShapes.Shape
+import com.game.rps.model.Result.Outcome
 
 /**
  * Trait representing the Player
@@ -13,45 +12,42 @@ trait Player {
    * Returns the Name of the player
    * @return
    */
-  def getName(): String
+  def getName: String
 
   /**
    * Returns and option of the next available move
    * @return
    */
-  def getMove(): Option[GameOrder[Shape]]
+  def getMove: Shape
 
-  def isBeatenBy(player : Player): Boolean
+  /**
+   * Set move for the player
+   * @param shape
+   */
+  def setMove(shape : Shape)
+
+  /**
+   * Play against a shape
+   * @param shape
+   * @return Outcome
+   */
+  def play(shape : Shape): Outcome
+
+  /**
+   * Return score for player
+   */
+  def getScore: Int
+
+
+  /**
+   * Set score for player
+   * @param score
+   */
+  def setScore(score:Int)
 
 }
 
 
-class RPSPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) extends Player {
-  /**
-   * @inheritdoc
-   */
-  override def getName() = this.name;
-
-  /**
-   * @inheritdoc
-   *
-   */
-  override def getMove() = rPSMovesGenerate.generateMove();
 
 
-  override def isBeatenBy(player : Player): Boolean = {
-       this.getMove().get.beatenBy(player.getMove().get)
-  }
-
-
-  override def toString() ={
-     this.name
-  }
-
-
-  def equals(player: RPSPlayer): Boolean={
-    this.getName().equalsIgnoreCase(player.getName())
-  }
-
-}
 
