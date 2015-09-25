@@ -1,7 +1,7 @@
 package com.game.rps.strategy
 
 import com.game.rps.core.moves.RPSMovesGenerator
-import com.game.rps.core.round.{GameRoundResult, RPSGame}
+import com.game.rps.core.round.{PlayerAndScore, GameRound, GameRoundResult, RPSGame}
 import com.game.rps.model.{Message, GameShapes}
 import com.game.rps.player.BotPlayer
 import com.game.rps.reader.{ConsoleReader, InputReader}
@@ -19,9 +19,11 @@ class BotVsBotStrategy (val inputReader:InputReader = ConsoleReader)extends Game
   val player2 = new BotPlayer("Hulk")
 
   override def play(): Unit = {
+    var gameRound = new GameRound(1, new PlayerAndScore(player1, 0), new PlayerAndScore(player2, 0))
     1 to noOfRounds foreach { i =>
-      /*val gr = RPSGame.play(i, player1, player2)
-      println(gr.toString)*/
+      val gameResult = RPSGame.play(gameRound)
+      gameRound = new GameRound(i + 1, gameResult.winner, gameResult.looser)
+      println(gameResult.toString)
     }
   }
 

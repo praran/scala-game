@@ -52,14 +52,4 @@ class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) exten
       case _ => false
     }
 
-  /**
-   * Return score for player
-   */
-  override def getScore: Int = this.score
-
-  /**
-   * Set score for player
-   * @param score
-   */
-  override def setScore(score: Int): Unit = this.score = score
 }

@@ -33,17 +33,6 @@ trait Player {
    */
   def play(shape : Shape): Outcome
 
-  /**
-   * Return score for player
-   */
-  def getScore: Int
-
-
-  /**
-   * Set score for player
-   * @param score
-   */
-  def setScore(score:Int)
 
 }
 
