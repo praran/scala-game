@@ -1,5 +1,4 @@
-package com.game.rps.utils
-
+package com.game.rps.model
 
 object Message {
 

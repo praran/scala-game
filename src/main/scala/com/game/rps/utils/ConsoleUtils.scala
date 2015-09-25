@@ -1,6 +1,6 @@
 package com.game.rps.utils
 
-import com.game.rps.model.GameShapes
+import com.game.rps.model.{Message, GameShapes}
 import com.game.rps.model.GameShapes.Shape
 
 import scala.annotation.tailrec
