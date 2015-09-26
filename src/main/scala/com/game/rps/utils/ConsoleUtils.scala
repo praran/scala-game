@@ -1,12 +1,17 @@
 package com.game.rps.utils
 
+import java.io.BufferedReader
+
 import com.game.rps.model.{Message, GameShapes}
 import com.game.rps.model.GameShapes.Shape
 
 import scala.annotation.tailrec
+import scala.io.StdIn
 import scala.io.StdIn.readInt
 import scala.io.StdIn.readLine
 import Message._
+
+
 
 object ConsoleUtils{
 
@@ -28,15 +33,15 @@ object ConsoleUtils{
    * @return
    */
   @tailrec
-  def readShape(message:String, tries : Int = 3) : Shape = {
+  def readShape(message:String, tries : Int = 3): Option[Shape] = {
     if(tries <=0) {
       println(OUT_OF_TRIES_TERMINATING)
-      System.exit(1)
+      return None
     }
     val in = readLine(message)
     strToShape(in) match {
       case None    => println(MESS_INVALID_INPUT); readShape(message, tries-1)
-      case Some(s) => s
+      case s       =>  s
     }
   }
 

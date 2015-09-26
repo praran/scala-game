@@ -11,7 +11,7 @@ class HumanPlayer(name: String)extends Player {
   /**
    * @inheritdoc
    */
-  override def getName = this.name;
+  override def getName = this.name
 
   /**
    * @inheritdoc

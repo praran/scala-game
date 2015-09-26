@@ -22,8 +22,8 @@ object GameShapes {
     override def compare(that: Shape) = {
 
       if (that.toString.equals(this.toString)) 0
-      else if (this.canBeBeatenBy.contains(that)) 1
-      else -1
+      else if (this.canBeBeatenBy.contains(that)) -1
+      else 1
     }
   }
 

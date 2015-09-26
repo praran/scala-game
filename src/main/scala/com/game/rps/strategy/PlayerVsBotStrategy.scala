@@ -19,10 +19,10 @@ class PlayerVsBotStrategy(val inputReader: InputReader = ConsoleReader)  extends
   /**
    * No of rounds to play for game
    */
-  override val noOfRounds = readInteger(MESS_NO_OF_ROUNDS)
+  override val noOfRounds = inputReader.readNoOfRound(MESS_NO_OF_ROUNDS)
 
   // Set the human player
-  val player1 = new HumanPlayer(readString(MESS_PLAYER1_NAME))
+  val player1 = new HumanPlayer(inputReader.readName(MESS_PLAYER1_NAME))
 
   // Set the bot player
   val player2 = new BotPlayer("Hulk")
@@ -30,7 +30,7 @@ class PlayerVsBotStrategy(val inputReader: InputReader = ConsoleReader)  extends
   override def play(): Unit = {
     var gameRound = new GameRound(1, new PlayerAndScore(player1, 0), new PlayerAndScore(player2, 0))
     1 to noOfRounds foreach { i =>
-      player1.setMove(readShape(MESS_PLAYER1_MOVE))
+      player1.setMove(inputReader.readShape(MESS_PLAYER1_MOVE))
       val gameResult = RPSGame.play(gameRound)
       gameRound = new GameRound(i + 1, gameResult.winner, gameResult.looser)
       println(gameResult.toString)

@@ -13,12 +13,12 @@ class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) exten
   /**
    * @inheritdoc
    */
-  override def getName = this.name;
+  override def getName = this.name
 
   /**
    * @inheritdoc
    */
-  override def getMove = rPSMovesGenerate.generateMove();
+  override def getMove = rPSMovesGenerate.generateMove()
 
 
   /**
