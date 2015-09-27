@@ -52,6 +52,19 @@ class BotPlayerTest extends Specification with Mockito {
       botPlayer.play(PAPER) must_== Lost
     }
 
+    "Bot player check equality" >> {
+      val mGenerator = mock[RPSMovesGenerator]
+      val botPlayer = new BotPlayer("bot1")(mGenerator)
+      botPlayer.eq(botPlayer) must_== true
+    }
+
+    "Bot player check non equality" >> {
+      val mGenerator = mock[RPSMovesGenerator]
+      val botPlayer = new BotPlayer("bot1")(mGenerator)
+      val botPlayer2 = new BotPlayer("bot2")(mGenerator)
+      botPlayer.eq(botPlayer2) must_== false
+    }
+
   }
 
 }

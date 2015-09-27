@@ -47,5 +47,16 @@ class HumanPlayerTest extends Specification {
       player.play(PAPER) must_== Lost
     }
 
+    "Human player check equality" >> {
+      val player = new HumanPlayer("human")
+      player.equals(player) must_== true
+    }
+
+    "Human player check non equality" >> {
+      val player = new HumanPlayer("human")
+      val player2 = new HumanPlayer("human2")
+      player.equals(player2) must_== false
+    }
+
   }
 }
