@@ -2,14 +2,14 @@ package com.game.rps.model.player
 
 import com.game.rps.core.movesgenerator.RPSMovesGenerate
 import com.game.rps.model.GameShapes.Shape
-import com.game.rps.model.Result.{Lost, Won, Tie, Outcome}
-
+import com.game.rps.model.Result.{Lost, Outcome, Tie, Won}
 
 
 class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) extends Player {
 
 
-  private var score:Int = 0
+  private var score: Int = 0
+
   /**
    * @inheritdoc
    */
@@ -18,14 +18,8 @@ class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) exten
   /**
    * @inheritdoc
    */
-  override def getMove = rPSMovesGenerate.generateMove()
-
-
-  /**
-   * @inheritdoc
-   */
-  override def play(shape : Shape): Outcome = {
-    this.getMove compare  shape
+  override def play(shape: Shape): Outcome = {
+    this.getMove compare shape
     match {
       case 0 => Tie
       case 1 => Won
@@ -36,12 +30,12 @@ class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) exten
   /**
    * @inheritdoc
    */
-  override def setMove(shape : Shape) = ???
+  override def getMove = rPSMovesGenerate.generateMove()
 
   /**
    * @inheritdoc
    */
-  override def toString = this.name
+  override def setMove(shape: Shape) = ???
 
   /**
    * @inheritdoc
@@ -51,5 +45,10 @@ class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) exten
       case that: Player => that.isInstanceOf[Player] && toString.equalsIgnoreCase(that.toString)
       case _ => false
     }
+
+  /**
+   * @inheritdoc
+   */
+  override def toString = this.name
 
 }

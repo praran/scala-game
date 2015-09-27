@@ -15,7 +15,7 @@ object GameShapes {
      */
     protected def canBeBeatenBy: Set[Shape]
 
-     def stringValue:String
+    def stringValue: String
 
     // add comparision feature
 
@@ -40,10 +40,10 @@ object GameShapes {
     /**
      * @inheritdoc
      */
-    override def toString =  "ROCK"
+    override def toString = "ROCK"
 
 
-    override def stringValue:String = toString
+    override def stringValue: String = toString
   }
 
   /**
@@ -60,7 +60,7 @@ object GameShapes {
      */
     override def toString = "PAPER"
 
-    override def stringValue:String = toString
+    override def stringValue: String = toString
   }
 
   /**
@@ -75,12 +75,12 @@ object GameShapes {
     /**
      * @inheritdoc
      */
-    override def toString  = "SCISSORS"
+    override def toString = "SCISSORS"
 
-    override def stringValue:String = toString
+    override def stringValue: String = toString
   }
 
 
-  def allShapes:Seq[Shape] = Seq(ROCK, SCISSORS, PAPER)
+  def allShapes: Seq[Shape] = Seq(ROCK, SCISSORS, PAPER)
 
 }

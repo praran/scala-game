@@ -3,8 +3,6 @@ package com.game.rps.reader
 import com.game.rps.model.GameShapes.Shape
 import com.game.rps.utils.ConsoleUtils
 
-import scala.io.StdIn._
-
 
 /**
  * Read data from input
@@ -36,7 +34,7 @@ trait InputReader {
 /**
  * Console Reader to read from console
  */
-class ConsoleReader private(val consoleUtils : ConsoleUtils) extends InputReader {
+class ConsoleReader private(val consoleUtils: ConsoleUtils) extends InputReader {
 
   /**
    * @inheritdoc
@@ -56,9 +54,9 @@ class ConsoleReader private(val consoleUtils : ConsoleUtils) extends InputReader
 
 object ConsoleReader {
 
-   def apply() = new ConsoleReader(ConsoleUtils)
+  def apply() = new ConsoleReader(ConsoleUtils)
 
-   def apply(consoleUtils: ConsoleUtils)= new ConsoleReader(consoleUtils)
+  def apply(consoleUtils: ConsoleUtils) = new ConsoleReader(consoleUtils)
 
 
 }

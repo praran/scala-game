@@ -70,6 +70,7 @@ class RPSMovesGenerator private(m: Seq[Shape])(implicit rg: RandomGenerator) ext
 object RPSMovesGenerator {
 
   // import default random generator as an implicit
+
   import com.game.rps.core.randomgenerator.DefaultRandomGenerator.RandomGenerator
 
   /**

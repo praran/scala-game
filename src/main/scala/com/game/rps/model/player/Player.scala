@@ -24,14 +24,14 @@ trait Player {
    * Set move for the player
    * @param shape
    */
-  def setMove(shape : Shape)
+  def setMove(shape: Shape)
 
   /**
    * Play against a shape
    * @param shape
    * @return Outcome
    */
-  def play(shape : Shape): Outcome
+  def play(shape: Shape): Outcome
 
 
 }

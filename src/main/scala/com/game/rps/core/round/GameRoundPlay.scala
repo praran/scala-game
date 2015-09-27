@@ -12,6 +12,6 @@ trait GameRoundPlay {
    * @param gameRound
    * @return
    */
-  def play(gameRound : GameRound): GameRoundResult
+  def play(gameRound: GameRound): GameRoundResult
 
 }

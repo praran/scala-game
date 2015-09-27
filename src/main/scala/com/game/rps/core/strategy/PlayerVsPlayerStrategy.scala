@@ -1,20 +1,19 @@
 package com.game.rps.core.strategy
 
 import com.game.rps.core.round.{GameRoundPlay, RPSGameRoundPlay}
-import com.game.rps.model.Message
-import com.game.rps.model.player.{Player, HumanPlayer}
-import com.game.rps.reader.{ConsoleReader, InputReader}
 import com.game.rps.model.GameRoundModel._
-import Message._
+import com.game.rps.model.Message._
+import com.game.rps.model.player.HumanPlayer
+import com.game.rps.reader.{ConsoleReader, InputReader}
 
 import scala.collection.mutable.ArrayBuffer
 
 
-class PlayerVsPlayerStrategy (   noOfRounds:Int
-                               , player1 : HumanPlayer
-                               , player2 : HumanPlayer
-                               , reader:InputReader = ConsoleReader()
-                               , gameRoundPlay : GameRoundPlay = RPSGameRoundPlay) extends GameStrategy {
+class PlayerVsPlayerStrategy(noOfRounds: Int
+                             , player1: HumanPlayer
+                             , player2: HumanPlayer
+                             , reader: InputReader = ConsoleReader()
+                             , gameRoundPlay: GameRoundPlay = RPSGameRoundPlay) extends GameStrategy {
 
   val result = ArrayBuffer.empty[GameRoundResult]
 
@@ -33,6 +32,6 @@ class PlayerVsPlayerStrategy (   noOfRounds:Int
       result.+=(gameResult)
       println(gameResult.toString)
     }
-     result
+    result
   }
 }

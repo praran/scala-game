@@ -11,16 +11,16 @@ object Result {
   /**
    * The case objects define the possible outcomes
    */
-  case object Won extends Outcome{
-     override  def toString = "Won"
+  case object Won extends Outcome {
+    override def toString = "Won"
   }
 
-  case object Lost extends Outcome{
-    override  def toString = "Lost"
+  case object Lost extends Outcome {
+    override def toString = "Lost"
   }
 
-  case object Tie extends Outcome{
-    override  def toString = "Tie"
+  case object Tie extends Outcome {
+    override def toString = "Tie"
   }
 
 }
