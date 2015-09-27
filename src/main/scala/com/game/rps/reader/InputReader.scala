@@ -36,24 +36,29 @@ trait InputReader {
 /**
  * Console Reader to read from console
  */
-class ConsoleReader extends InputReader {
+class ConsoleReader private(val consoleUtils : ConsoleUtils) extends InputReader {
 
   /**
    * @inheritdoc
    */
-  override def readShape(msg: String): Shape = ConsoleUtils.readShape(msg).get
+  override def readShape(msg: String): Shape = consoleUtils.readShape(msg).get
 
   /**
    * @inheritdoc
    */
-  override def readNoOfRound(msg: String): Int = ConsoleUtils.readInteger(msg)
+  override def readNoOfRound(msg: String): Int = consoleUtils.readInteger(msg).get
 
   /**
    * @inheritdoc
    */
-  override def readName(msg: String): String = ConsoleUtils.readString(msg)
+  override def readName(msg: String): String = consoleUtils.readString(msg)
 }
 
-object ConsoleReader extends ConsoleReader{
+object ConsoleReader {
+
+   def apply() = new ConsoleReader(ConsoleUtils)
+
+   def apply(consoleUtils: ConsoleUtils)= new ConsoleReader(consoleUtils)
+
 
 }

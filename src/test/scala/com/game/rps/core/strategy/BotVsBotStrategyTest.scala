@@ -17,18 +17,18 @@ class BotVsBotStrategyTest extends Specification with Mockito{
 
     "Bot and Bot must play for specified rounds" >> {
       implicit val rPSMovesGenerate = mock[RPSMovesGenerate]
-
+      // init
       val player1 = spy(new BotPlayer("bot1"))
       val player2 = spy(new BotPlayer("bot2"))
       val out = new ByteArrayOutputStream()
-
+      // behaviour
       player1.getMove returns(SCISSORS, SCISSORS, SCISSORS)
       player2.getMove returns(PAPER, PAPER, PAPER)
-
-
+     // SUT
       val res = Console.withOut(out){
         new BotVsBotStrategy(3, player1 , player2).play()
       }
+      // Assert
       res.size must_== 3
 
     }

@@ -30,9 +30,9 @@ class RPSConsoleGame {
 
 
     readInteger("") match {
-      case 1 => setUpBotVsBotGame()
-      case 2 => setUpHumanVsHuman()
-      case 3 => setUpHumanVsBot()
+      case Some(1) => setUpBotVsBotGame()
+      case Some(2) => setUpHumanVsHuman()
+      case Some(3) => setUpHumanVsBot()
       case _ => println("Invalid choice")
     }
 
@@ -44,7 +44,7 @@ class RPSConsoleGame {
    * these can be intialized via IOC container
    */
   private def setUpBotVsBotGame(): Unit ={
-    val noOfRounds = ConsoleReader.readNoOfRound(MESS_NO_OF_ROUNDS)
+    val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
     val player1 = new  BotPlayer("Veronica")
     val player2 = new BotPlayer("Hulk")
     val res =  new BotVsBotStrategy(noOfRounds, player1, player2).play()
@@ -53,17 +53,17 @@ class RPSConsoleGame {
 
 
   private def setUpHumanVsHuman() ={
-    val noOfRounds = ConsoleReader.readNoOfRound(MESS_NO_OF_ROUNDS)
-    val player1 = new  HumanPlayer(ConsoleReader.readName(MESS_PLAYER1_NAME))
-    val player2 = new  HumanPlayer(ConsoleReader.readName(MESS_PLAYER2_NAME))
+    val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
+    val player1 = new  HumanPlayer(ConsoleReader().readName(MESS_PLAYER1_NAME))
+    val player2 = new  HumanPlayer(ConsoleReader().readName(MESS_PLAYER2_NAME))
     val res = new PlayerVsPlayerStrategy(noOfRounds, player1, player2).play()
     printSummary(res)
   }
 
 
   private def setUpHumanVsBot() = {
-    val noOfRounds = ConsoleReader.readNoOfRound(MESS_NO_OF_ROUNDS)
-    val player1 = new  HumanPlayer(ConsoleReader.readName(MESS_PLAYER1_NAME))
+    val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
+    val player1 = new  HumanPlayer(ConsoleReader().readName(MESS_PLAYER1_NAME))
     val player2 = new  BotPlayer("Hulk")
     val res = new PlayerVsBotStrategy(noOfRounds, player1, player2).play()
     printSummary(res)

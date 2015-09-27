@@ -9,7 +9,7 @@ import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 
 
-class PlayerVsPlayerStrategyTest extends Specification with Mockito{
+class PlayerVsBotStrategyTest extends Specification with Mockito{
 
    "Player vs Bot specifications" >> {
 

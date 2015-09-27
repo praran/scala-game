@@ -13,7 +13,7 @@ import scala.collection.mutable.ArrayBuffer
 class PlayerVsPlayerStrategy (   noOfRounds:Int
                                , player1 : HumanPlayer
                                , player2 : HumanPlayer
-                               , reader:InputReader = ConsoleReader
+                               , reader:InputReader = ConsoleReader()
                                , gameRoundPlay : GameRoundPlay = RPSGameRoundPlay) extends GameStrategy {
 
   val result = ArrayBuffer.empty[GameRoundResult]

@@ -13,7 +13,7 @@ import Message._
 
 
 
-object ConsoleUtils{
+class ConsoleUtils{
 
 
 
@@ -32,7 +32,6 @@ object ConsoleUtils{
    * @param tries
    * @return
    */
-  @tailrec
   def readShape(message:String, tries : Int = 3): Option[Shape] = {
     if(tries <=0) {
       println(OUT_OF_TRIES_TERMINATING)
@@ -61,16 +60,15 @@ object ConsoleUtils{
    * @param tries
    * @return
    */
-  @tailrec
-  def readInteger(msg : String , tries : Int = 3) : Int = {
+  def readInteger(msg : String , tries : Int = 3) : Option[Int] = {
      if(tries <=0){
        println(OUT_OF_TRIES_TERMINATING)
-       System.exit(1)
+       return None
      }
       println(msg)
 
     try
-       readInt()
+       Some(readInt())
     catch{
       case  ex: NumberFormatException => println(MESS_INVALID_INPUT); readInteger(msg, tries-1)
     }
@@ -78,3 +76,5 @@ object ConsoleUtils{
 
   }
 }
+
+object ConsoleUtils  extends ConsoleUtils {}

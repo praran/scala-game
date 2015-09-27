@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
 class PlayerVsBotStrategy( noOfRounds:Int
                            , player1 : HumanPlayer
                            , player2 : BotPlayer
-                           , inputReader: InputReader = ConsoleReader
+                           , inputReader: InputReader = ConsoleReader()
                            , gameRoundPlay : GameRoundPlay = RPSGameRoundPlay)  extends  GameStrategy{
 
 
