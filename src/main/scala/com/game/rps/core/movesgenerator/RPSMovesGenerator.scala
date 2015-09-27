@@ -65,7 +65,8 @@ class RPSMovesGenerator private(m: Seq[Shape])(implicit rg: RandomGenerator) ext
 
 /**
  * Helper object to create a singleton RPSMovesgenerator with default
- * random generator
+ * random generator.
+ *
  */
 object RPSMovesGenerator {
 

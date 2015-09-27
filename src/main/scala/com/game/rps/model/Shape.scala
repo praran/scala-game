@@ -1,11 +1,13 @@
 package com.game.rps.model
 
 
+/**
+ * Gameshapes model
+ */
 object GameShapes {
 
   /**
-   * Shapes for the ROCK , PAPER and SCISSORS game
-   * implements partial order and also contains a string representation of the shape
+   * general Shapes contract
    */
   sealed trait Shape extends Ordered[Shape] {
 

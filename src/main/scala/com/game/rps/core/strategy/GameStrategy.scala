@@ -3,6 +3,9 @@ package com.game.rps.core.strategy
 import com.game.rps.model.GameRoundModel.GameRoundResult
 
 
+/**
+ * Contract for game strategies
+ */
 trait GameStrategy {
 
   /**

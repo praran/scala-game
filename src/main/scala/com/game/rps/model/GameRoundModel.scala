@@ -4,7 +4,7 @@ import com.game.rps.model.Result.{Outcome, Tie}
 import com.game.rps.model.player.Player
 
 /**
- * Created by pradeep on 26/09/2015.
+ * various container objects for RPS games
  */
 object GameRoundModel {
 

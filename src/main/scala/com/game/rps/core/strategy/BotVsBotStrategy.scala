@@ -6,7 +6,13 @@ import com.game.rps.model.player.BotPlayer
 
 import scala.collection.mutable.ArrayBuffer
 
-
+/**
+ * Strategy for Bot Vs Bot RPS game
+ * @param noOfRounds
+ * @param player1
+ * @param player2
+ * @param gameRoundPlay
+ */
 class BotVsBotStrategy(noOfRounds: Int
                        , player1: BotPlayer
                        , player2: BotPlayer

@@ -1,5 +1,8 @@
 package com.game.rps.model
 
+/**
+ * Messages to output to user
+ */
 object Message {
 
   val MESS_INVALID_INPUT = "Invalid input !"

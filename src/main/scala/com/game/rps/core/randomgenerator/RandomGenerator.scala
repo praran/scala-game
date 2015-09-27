@@ -18,7 +18,9 @@ trait RandomGenerator {
 
 
 /**
- * A default random generator using $scala.util.Random
+ * A default random generator using $scala.util.Random to shuffle through
+ * the input sequences and returns element.
+ * The randomness is uniformly distributed as shown in test case
  * defined as an object so the object is singleton
 
  */

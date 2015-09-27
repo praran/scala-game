@@ -8,6 +8,14 @@ import com.game.rps.reader.{ConsoleReader, InputReader}
 
 import scala.collection.mutable.ArrayBuffer
 
+/**
+ * Strategy for Player vs Bot  RPS game
+ * @param noOfRounds
+ * @param player1
+ * @param player2
+ * @param inputReader
+ * @param gameRoundPlay
+ */
 class PlayerVsBotStrategy(noOfRounds: Int
                           , player1: HumanPlayer
                           , player2: BotPlayer

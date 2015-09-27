@@ -2,7 +2,7 @@ package com.game.rps.model
 
 
 /**
- * Result of the games
+ * Result of the game rounds
  */
 object Result {
 

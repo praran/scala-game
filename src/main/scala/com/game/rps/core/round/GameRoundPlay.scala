@@ -3,7 +3,7 @@ package com.game.rps.core.round
 import com.game.rps.model.GameRoundModel.{GameRound, GameRoundResult}
 
 /**
- * Created by pradeep on 26/09/2015.
+ * General contract for each round of game
  */
 trait GameRoundPlay {
 

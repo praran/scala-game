@@ -5,7 +5,7 @@ import com.game.rps.utils.ConsoleUtils
 
 
 /**
- * Read data from input
+ * Contract to Read data from input source
  */
 trait InputReader {
 

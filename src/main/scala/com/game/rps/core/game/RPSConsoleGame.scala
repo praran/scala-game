@@ -11,6 +11,9 @@ import com.game.rps.utils.ConsoleUtils._
 
 import scala.collection.mutable.ArrayBuffer
 
+/**
+ * Rock paper scissor console game
+ */
 
 class RPSConsoleGame {
 
@@ -39,7 +42,7 @@ class RPSConsoleGame {
 
   /**
    * Set up for different strategies
-   * these can be intialized via IOC container
+   * tying up all configurations can be done using IOC container
    */
   private def setUpBotVsBotGame(): Unit = {
     val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
@@ -47,8 +50,8 @@ class RPSConsoleGame {
     val player2 = new BotPlayer("Hulk")
     val res = new BotVsBotStrategy(noOfRounds, player1, player2).play()
     printSummary(res)
-  }
 
+  }
 
   private def setUpHumanVsBot() = {
     val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
@@ -66,6 +69,7 @@ class RPSConsoleGame {
     printSummary(res)
   }
 
+
   /**
    * Helper method to print summary
    * @param rounds
@@ -75,8 +79,10 @@ class RPSConsoleGame {
     def print(p1: PlayerAndScore, p2: PlayerAndScore) = {
       if (p1.score > p2.score)
         println(s"${p1.player.getName} wins ${p1.score} - ${p2.score}  ${p2.player.getName}")
-      else
+      else if(p1.score < p2.score)
         println(s"${p2.player.getName} wins ${p2.score} - ${p1.score}  ${p1.player.getName}")
+      else
+        println(s"Game Tied ${p1.player.getName}  ${p1.score} - ${p2.score} ${p2.player.getName}")
     }
 
     rounds.lastOption match {

@@ -28,7 +28,7 @@ class RPSConsoleGameTest extends Specification with Mockito {
 
     }
 
-    "Check if summary is printed correctly when has rounds " >> {
+    "Check if summary is printed correctly when has rounds and player1 wins" >> {
       val out = new ByteArrayOutputStream()
       val game = new RPSConsoleGame()
       val rounds = ArrayBuffer.empty[GameRoundResult]
@@ -42,6 +42,39 @@ class RPSConsoleGameTest extends Specification with Mockito {
         game.printSummary(rounds)
       }
       out.toString must_== "player1 wins 2 - 0  player2\n"
+    }
+
+    "Check if summary is printed correctly when player2 wins " >> {
+      val out = new ByteArrayOutputStream()
+      val game = new RPSConsoleGame()
+      val rounds = ArrayBuffer.empty[GameRoundResult]
+
+      val g1 = new GameRoundResult(1, Won, winner = new PlayerAndScore(new HumanPlayer("player1"), 1), looser = new PlayerAndScore(new HumanPlayer("player2"), 0))
+      val g2 = new GameRoundResult(1, Won, winner = new PlayerAndScore(new HumanPlayer("player1"), 0), looser = new PlayerAndScore(new HumanPlayer("player2"), 2))
+
+      rounds.+=(g1, g2)
+
+      Console.withOut(out) {
+        game.printSummary(rounds)
+      }
+      out.toString must_== "player2 wins 2 - 0  player1\n"
+    }
+
+
+    "Check if summary is printed correctly when game tied " >> {
+      val out = new ByteArrayOutputStream()
+      val game = new RPSConsoleGame()
+      val rounds = ArrayBuffer.empty[GameRoundResult]
+
+      val g1 = new GameRoundResult(1, Won, winner = new PlayerAndScore(new HumanPlayer("player1"), 1), looser = new PlayerAndScore(new HumanPlayer("player2"), 0))
+      val g2 = new GameRoundResult(1, Won, winner = new PlayerAndScore(new HumanPlayer("player1"), 2), looser = new PlayerAndScore(new HumanPlayer("player2"), 2))
+
+      rounds.+=(g1, g2)
+
+      Console.withOut(out) {
+        game.printSummary(rounds)
+      }
+      out.toString must_== "Game Tied player1  2 - 2 player2\n"
     }
 
   }
