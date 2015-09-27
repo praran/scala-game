@@ -36,7 +36,7 @@ trait InputReader {
 /**
  * Console Reader to read from console
  */
-object ConsoleReader extends InputReader {
+class ConsoleReader extends InputReader {
 
   /**
    * @inheritdoc
@@ -52,4 +52,8 @@ object ConsoleReader extends InputReader {
    * @inheritdoc
    */
   override def readName(msg: String): String = ConsoleUtils.readString(msg)
+}
+
+object ConsoleReader extends ConsoleReader{
+
 }

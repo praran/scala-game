@@ -61,6 +61,7 @@ object ConsoleUtils{
    * @param tries
    * @return
    */
+  @tailrec
   def readInteger(msg : String , tries : Int = 3) : Int = {
      if(tries <=0){
        println(OUT_OF_TRIES_TERMINATING)
