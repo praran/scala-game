@@ -15,7 +15,7 @@ class ConsoleUtils {
    * @param str
    * @return Option[Shape]
    */
-  def strToShape(str: String) = GameShapes.allShapes.find(s => s.stringValue.equalsIgnoreCase(str))
+  def strToShape(str: String) = GameShapes.allShapes.find(s => s.toString.equalsIgnoreCase(str))
 
 
   /**

@@ -1,20 +1,13 @@
 package com.game.rps.utils
 
-import java.io.{ByteArrayOutputStream, ByteArrayInputStream}
+import java.io.ByteArrayInputStream
 
 import com.game.rps.model.GameShapes.ROCK
-import org.scalamock.scalatest.MockFactory
-import org.scalatest.FlatSpec
 import org.specs2.mock.Mockito
-import org.specs2.mock.mockito.CalledMatchers.MockitoVerificationWithTimeout
-import org.specs2.mock.mockito.MockitoStubs
 import org.specs2.mutable.Specification
 
-/**
- * Created by pradeep on 26/09/2015.
- */
 
-class ConsoleUtilsTest extends Specification with Mockito{
+class ConsoleUtilsTest extends Specification with Mockito {
 
 
   "Read shape from console specifications" >> {
@@ -24,13 +17,13 @@ class ConsoleUtilsTest extends Specification with Mockito{
       val shape = Console.withIn(in) {
         ConsoleUtils.readShape("")
       }
-      shape.get must_==( ROCK)
+      shape.get must_== (ROCK)
     }
 
     "read shape should quit on invalid input after trying" >> {
       val in = new ByteArrayInputStream("invalid".getBytes)
       val shape = Console.withIn(in) {
-        ConsoleUtils.readShape("",1)
+        ConsoleUtils.readShape("", 1)
       }
       shape must_== None
     }
@@ -50,7 +43,7 @@ class ConsoleUtilsTest extends Specification with Mockito{
     "read integer invalid int from console" >> {
       val in = new ByteArrayInputStream("hello".getBytes)
       val out = Console.withIn(in) {
-        ConsoleUtils.readInteger("",1)
+        ConsoleUtils.readInteger("", 1)
       }
       out must_== None
     }
@@ -64,19 +57,19 @@ class ConsoleUtilsTest extends Specification with Mockito{
       val shape = Console.withIn(in) {
         ConsoleUtils.readString("")
       }
-      shape must_==( "rock")
+      shape must_== ("rock")
     }
 
   }
 
   "String to shape specifications" >> {
-     "Valid string to Shape" >> {
-        ConsoleUtils.strToShape("rock").get must_== ROCK
-     }
+    "Valid string to Shape" >> {
+      ConsoleUtils.strToShape("rock").get must_== ROCK
+    }
 
-     "Invalid string to Shape" >> {
-       ConsoleUtils.strToShape("hello")  must_== None
-     }
+    "Invalid string to Shape" >> {
+      ConsoleUtils.strToShape("hello") must_== None
+    }
 
   }
 

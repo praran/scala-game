@@ -15,12 +15,13 @@ object GameShapes {
      */
     protected def canBeBeatenBy: Set[Shape]
 
-    def stringValue: String
 
-    // add comparision feature
-
+    /**
+     * Comparision based ordering
+     * @param that
+     * @return
+     */
     override def compare(that: Shape) = {
-
       if (that.toString.equals(this.toString)) 0
       else if (this.canBeBeatenBy.contains(that)) -1
       else 1
@@ -43,7 +44,6 @@ object GameShapes {
     override def toString = "ROCK"
 
 
-    override def stringValue: String = toString
   }
 
   /**
@@ -60,7 +60,6 @@ object GameShapes {
      */
     override def toString = "PAPER"
 
-    override def stringValue: String = toString
   }
 
   /**
@@ -77,7 +76,6 @@ object GameShapes {
      */
     override def toString = "SCISSORS"
 
-    override def stringValue: String = toString
   }
 
 

@@ -11,9 +11,7 @@ import com.game.rps.utils.ConsoleUtils._
 
 import scala.collection.mutable.ArrayBuffer
 
-/**
- * Created by pradeep on 26/09/2015.
- */
+
 class RPSConsoleGame {
 
   implicit val movesGenerator: RPSMovesGenerator = RPSMovesGenerator(GameShapes.allShapes)
@@ -52,15 +50,6 @@ class RPSConsoleGame {
   }
 
 
-  private def setUpHumanVsHuman() = {
-    val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
-    val player1 = new HumanPlayer(ConsoleReader().readName(MESS_PLAYER1_NAME))
-    val player2 = new HumanPlayer(ConsoleReader().readName(MESS_PLAYER2_NAME))
-    val res = new PlayerVsPlayerStrategy(noOfRounds, player1, player2).play()
-    printSummary(res)
-  }
-
-
   private def setUpHumanVsBot() = {
     val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
     val player1 = new HumanPlayer(ConsoleReader().readName(MESS_PLAYER1_NAME))
@@ -69,12 +58,19 @@ class RPSConsoleGame {
     printSummary(res)
   }
 
+  private def setUpHumanVsHuman() = {
+    val noOfRounds = ConsoleReader().readNoOfRound(MESS_NO_OF_ROUNDS)
+    val player1 = new HumanPlayer(ConsoleReader().readName(MESS_PLAYER1_NAME))
+    val player2 = new HumanPlayer(ConsoleReader().readName(MESS_PLAYER2_NAME))
+    val res = new PlayerVsPlayerStrategy(noOfRounds, player1, player2).play()
+    printSummary(res)
+  }
 
   /**
    * Helper method to print summary
    * @param rounds
    */
-  private def printSummary(rounds: ArrayBuffer[GameRoundResult]): Unit = {
+  def printSummary(rounds: ArrayBuffer[GameRoundResult]): Unit = {
 
     def print(p1: PlayerAndScore, p2: PlayerAndScore) = {
       if (p1.score > p2.score)
@@ -90,5 +86,8 @@ class RPSConsoleGame {
 
 
   }
+
+
+
 
 }

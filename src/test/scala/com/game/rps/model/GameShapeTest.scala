@@ -1,20 +1,20 @@
 package com.game.rps.model
 
-import com.game.rps.model.GameShapes.{SCISSORS, PAPER, ROCK}
+import com.game.rps.model.GameShapes.{PAPER, ROCK, SCISSORS}
 import org.specs2.mutable.Specification
 
 
-class ModelTest extends Specification{
+class GameShapeTest extends Specification {
 
   "ROCK game shape specifications" >> {
 
-     "ROCK should be beaten by PAPER" >> {
-       ROCK < PAPER must_== true
-     }
+    "ROCK should be beaten by PAPER" >> {
+      ROCK < PAPER must_== true
+    }
 
-     "ROCK should not be beaten by Scissors" >> {
-       ROCK < SCISSORS must_== false
-     }
+    "ROCK should not be beaten by Scissors" >> {
+      ROCK < SCISSORS must_== false
+    }
 
     "ROCK should not be beaten by ROCK" >> {
       ROCK < ROCK must_== false

@@ -35,7 +35,7 @@ class BotPlayer(name: String)(implicit rPSMovesGenerate: RPSMovesGenerate) exten
   /**
    * @inheritdoc
    */
-  override def setMove(shape: Shape) = ???
+  override def setMove(shape: Shape): Unit = throw new UnsupportedOperationException()
 
   /**
    * @inheritdoc
